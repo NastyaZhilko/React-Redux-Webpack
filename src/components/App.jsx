@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import {Route} from "react-router-dom";
 import Main from "./main/Main";
+import "./App.less"
 
 
 const App = () => {
