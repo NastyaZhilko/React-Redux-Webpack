@@ -1,24 +1,23 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
-import {Route} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 import Main from "./main/Main";
 import "./App.less"
+import Card from "./main/card/Card";
 
 
 const App = () => {
-
-    const dispatch = useDispatch()
-
-
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className='content'>
-                <Route path="/" component={Main}/>
+                <Switch>
+                    <Route exact path="/" component={Main}/>
+                    <Route path="/card/:username/:reponame" component={Card}/>
+                    <Redirect to="/"/>
+                </Switch>
             </div>
-
-        </BrowserRouter>
-
+        </HashRouter>
     )
 }
 export default App

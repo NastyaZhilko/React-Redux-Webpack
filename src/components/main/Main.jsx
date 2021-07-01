@@ -14,8 +14,10 @@ const Main = () => {
     const currentPage = useSelector(state => state.repos.currentPage)
     const perPage = useSelector(state => state.repos.perPage)
     const totalCount = useSelector(state => state.repos.totalCount)
+    const isFetchError = useSelector(state => state.repos.isFetchError)
 
     const [searchValue, setSearchValue] = useState('')
+
     const pagesCount = Math.ceil(totalCount / perPage)
     const pages = []
     createPages(pages, pagesCount, currentPage)
@@ -31,6 +33,12 @@ const Main = () => {
 
     return (
         <div>
+            {
+                isFetchError &&
+                <div className="alert alert-danger" role="alert">
+                    Произошла ошибка!
+                </div>
+            }
             <div className="search">
                 <input
                     value={searchValue}
